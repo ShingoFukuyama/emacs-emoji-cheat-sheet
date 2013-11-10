@@ -67,9 +67,10 @@
 (defun emoji-cheat-sheet-copy-at-point ()
   (interactive)
   (let (($po (point)) $code)
-    (execute-kbd-macro (kbd "<right>"))
-    (kill-new (setq $code (buffer-substring-no-properties $po (point))))
-    (execute-kbd-macro (kbd "<left>"))
+    (kill-new (setq $code (buffer-substring-no-properties
+                           $po
+                           (re-search-forward "\:.+?\:"))))
+    (goto-char (match-beginning 0))
     (message (format "Copy `%s' to clipboard" $code))))
 
 ;;;###autoload
