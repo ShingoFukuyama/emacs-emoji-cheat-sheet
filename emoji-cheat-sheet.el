@@ -61,7 +61,7 @@
                                   'png nil :margin 1 :ascent 'center)
                     (format ":%s:" (substring $file 0 -4)))
       (setq $i (1+ $i))
-      (if (eq 0 (% $i (- (/ $width 3) 1) ))
+      (if (eq 0 (% $i (/ $width 4)))
           (insert "\n")))))
 
 (defun emoji-cheat-sheet-copy-at-point ()
