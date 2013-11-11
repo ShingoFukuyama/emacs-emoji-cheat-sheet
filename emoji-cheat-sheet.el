@@ -55,13 +55,13 @@
 (defun emoji-cheat-sheet-create ()
   (let (($files (directory-files emoji-cheat-sheet-dir nil "png$"))
         ($i 0)
-        ($width (window-width)))
+        ($width (/ (window-width) 4)))
     (dolist ($file $files)
       (insert-image (create-image (concat emoji-cheat-sheet-dir $file)
                                   'png nil :margin 1 :ascent 'center)
                     (format ":%s:" (substring $file 0 -4)))
       (setq $i (1+ $i))
-      (if (eq 0 (% $i (/ $width 4)))
+      (if (eq 0 (% $i $width))
           (insert "\n")))))
 
 (defun emoji-cheat-sheet-copy-at-point ()
@@ -86,6 +86,7 @@
     (emoji-cheat-sheet-create)
     (local-set-key (kbd "RET") 'emoji-cheat-sheet-copy-at-point)
     (goto-char (point-min))
+    (next-line 3)
     (read-only-mode 1)))
 
 (provide 'emoji-cheat-sheet)

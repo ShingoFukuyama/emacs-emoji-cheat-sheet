@@ -18,4 +18,4 @@ Emoji image files are from [[https://github.com/arvida/emoji-cheat-sheet.com][ar
 ** Usage
 
 M-x emoji-cheat-sheet :tired_face:
-And then press `RET' to copy emoji code to clipboard.
+Press `RET' on any emoji to copy its code to clipboard.
